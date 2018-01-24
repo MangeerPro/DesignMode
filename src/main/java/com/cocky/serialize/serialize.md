@@ -1,0 +1,17 @@
+反序列化
+序列化ID问题
+虚拟机是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化ID是否一致（就是private static final long SerialVersionID = 1L)。
+案例：保持客户端与服务器端版本一致，服务器端版本更新时修改序列化ID。
+
+静态变量序列化
+序列化不保存静态变量。
+父类序列化与Transient关键字
+
+要想将父类对象也序列化，就需要让父类也实现Serializable接口。如果父类不实现，就需要有默认的无参的构造函数。如在无参构造函数中没有初始化，则父类变量都是默认声明的值，int类型默认0.String默认null。
+Transient关键字，可以使变量不被序列化。子类公共字段不需要被序列化，可以将字段声明在未实现Serializable接口的父类中，避免重复书写Transient关键字。如图：
+
+对敏感字段加密
+序列化过程中，虚拟机会试图调用对象类里的writeObject和readObject方法，进行用户自定义的序列化和反序列化，如果没有这样的方法，则默认调用ObjectOutputStream的defaultWriteObject和ObjectInputStream的defaultReadObject方法。用户自定义的writeObject、readObject方法，进行用户自定义的序列化和反序列化。
+
+序列化存储规则
+Java序列化机制，为了节省磁盘空间，具有特定的存储规则，当写入文件的对象为同一对象时，不会再将内容进行存储。而是再存储一份引用，增加5个字节的存储空间，存储引用以及控制信息。反序列化时，恢复引用关系，二者相等。
