@@ -24,11 +24,13 @@ public class Client {
 
         LogFileOperateApi fileOperate = new LogFileOperate("");
 
+        //创建适配器对象
+        LogDbOperateApi dbOperate = new Adapter(fileOperate);
         //保存日志
-        fileOperate.writeLogFile(list);
+        dbOperate.createLog(lml);
 
         //读取日志
-        List<LogModel> list1 = fileOperate.readLogFile();
+        List<LogModel> list1 = dbOperate.getAllLog();
         System.out.println("readlog :" + list1.get(0));
 
 
