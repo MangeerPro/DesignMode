@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 类适配器模式客户端
+ */
 public class ClassAdapterClient {
     public static void main(String[] args) {
         //准备日志内容
