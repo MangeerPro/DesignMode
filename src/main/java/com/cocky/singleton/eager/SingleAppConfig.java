@@ -23,6 +23,7 @@ public class SingleAppConfig {
      */
     private SingleAppConfig() {
         //读取配置文件方法
+        System.out.println("饿汉模式读取配置文件开始：");
         readConfig();
     }
 
@@ -33,7 +34,7 @@ public class SingleAppConfig {
         InputStream inputStream = null;
         Properties properties = new Properties();
         try {
-            SingleAppConfig.class.getClassLoader().getResourceAsStream("AppConfig.properties");
+            inputStream = SingleAppConfig.class.getClassLoader().getResourceAsStream("AppConfig.properties");
             properties.load(inputStream);
             //获取参数赋值
             this.parameterA = properties.getProperty("paramA");
@@ -53,8 +54,7 @@ public class SingleAppConfig {
 
     /**
      * 外部获取单例方法
-     *
-     * @return
+     * @return instance
      */
     public static SingleAppConfig getInstance() {
         return instance;

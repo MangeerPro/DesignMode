@@ -17,7 +17,8 @@ public class SingleAppConfig {
      * 私有化构造函数
      */
     private SingleAppConfig() {
-
+        System.out.println("懒加载读取配置文件开始：");
+        readConfig();
     }
 
     /**
@@ -27,7 +28,7 @@ public class SingleAppConfig {
         InputStream inputStream = null;
         Properties properties = new Properties();
         try {
-            com.cocky.singleton.eager.SingleAppConfig.class.getClassLoader().getResourceAsStream("AppConfig.properties");
+            inputStream = SingleAppConfig.class.getClassLoader().getResourceAsStream("AppConfig.properties");
             properties.load(inputStream);
             //获取参数赋值
             this.parameterA = properties.getProperty("paramA");
@@ -48,8 +49,7 @@ public class SingleAppConfig {
 
     /**
      * 获取单例对象实例
-     *
-     * @return
+     * @return instance
      */
     public static SingleAppConfig getInstance() {
         if (instance == null) {
