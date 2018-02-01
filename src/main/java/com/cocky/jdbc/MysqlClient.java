@@ -4,6 +4,7 @@ package com.cocky.jdbc;
 import java.sql.*;
 
 public class MysqlClient {
+
     public static void main(String[] args) {
         Connection connection = null;
         Statement statement = null;
