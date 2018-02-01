@@ -1,14 +1,10 @@
 package com.cocky.adapter;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Client {
-    public Client() {
-    }
-
+public class ClassAdapterClient {
     public static void main(String[] args) {
         //准备日志内容
         LogModel lml = new LogModel();
@@ -19,19 +15,12 @@ public class Client {
         lml.setOperateUser("admin");
         lml.setOperateTime(time);
         lml.setLogContent("这是一个测试");
-        List<LogModel> list = new ArrayList<LogModel>();
 
-        LogFileOperateApi fileOperate = new LogFileOperate("");
+        LogDbOperateApi logDbOperateApi = new ClassAdapter("");
+        logDbOperateApi.createLog(lml);
 
-        //创建适配器对象
-        LogDbOperateApi dbOperate = new Adapter(fileOperate);
-        //保存日志
-        dbOperate.createLog(lml);
+        List<LogModel> list = logDbOperateApi.getAllLog();
 
-        //读取日志
-        List<LogModel> list1 = dbOperate.getAllLog();
-        System.out.println("readlog :" + list1.get(0));
-
-
+        System.out.println("AllLog: " + list.get(0));
     }
 }

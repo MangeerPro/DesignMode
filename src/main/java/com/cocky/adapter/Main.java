@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Client {
-    public Client() {
-    }
-
+public class Main {
     public static void main(String[] args) {
         //准备日志内容
         LogModel lml = new LogModel();
@@ -20,18 +17,12 @@ public class Client {
         lml.setOperateTime(time);
         lml.setLogContent("这是一个测试");
         List<LogModel> list = new ArrayList<LogModel>();
+        list.add(lml);
 
-        LogFileOperateApi fileOperate = new LogFileOperate("");
+        LogFileOperateApi logFileOperateApi = new LogFileOperate("");
+        logFileOperateApi.writeLogFile(list);
 
-        //创建适配器对象
-        LogDbOperateApi dbOperate = new Adapter(fileOperate);
-        //保存日志
-        dbOperate.createLog(lml);
-
-        //读取日志
-        List<LogModel> list1 = dbOperate.getAllLog();
-        System.out.println("readlog :" + list1.get(0));
-
-
+        List<LogModel> list1 = logFileOperateApi.readLogFile();
+        System.out.println("Log: " + list1.get(0));
     }
 }
