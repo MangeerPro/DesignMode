@@ -5,7 +5,8 @@ package com.cocky.singleton.lazy.threadsafe;
  */
 public class Singleton {
     /**
-     * 存储单例对象实例
+     * 存储单例对象实例，对保存实例的变量添加volatile关键字，该变量读写共享内存
+     * volatile关键字会屏蔽掉虚拟机的一些必要的代码优化，运行效率并不高
      */
     private volatile static Singleton instance = null;
 
