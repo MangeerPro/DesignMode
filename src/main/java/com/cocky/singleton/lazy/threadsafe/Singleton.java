@@ -1,4 +1,4 @@
-package com.cocky.singleton.lazy.treadsafe;
+package com.cocky.singleton.lazy.threadsafe;
 
 /**
  * 线程安全的单例模式,双重校验加锁
