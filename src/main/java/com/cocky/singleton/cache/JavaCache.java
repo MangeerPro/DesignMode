@@ -1,4 +1,4 @@
-package com.cocky.singleton;
+package com.cocky.singleton.cache;
 
 import java.util.HashMap;
 import java.util.Map;

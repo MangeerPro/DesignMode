@@ -10,5 +10,6 @@ public enum Singleton {
 	 */
 	public void singletonOperation() {
 		//功能处理
+		System.out.println("Enum Singleton!");
 	}
 }
