@@ -1,4 +1,4 @@
-package com.cocky.abstractfac.productimpl;
+package com.cocky.abstractfac.product.impl;
 
 public class ProductB {
     
