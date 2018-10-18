@@ -1,4 +1,4 @@
-package com.cocky.abstractfac.product;
+package com.cocky.abstarctfac.product;
 
 public interface AbstractProductB {
     

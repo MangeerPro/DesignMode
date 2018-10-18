@@ -1,5 +1,8 @@
 package com.cocky.abstractfac.factory;
 
+import com.cocky.abstarctfac.product.AbstractProductA;
+import com.cocky.abstarctfac.product.AbstractProductB;
+
 /**
  * 抽象工厂接口、声明创建抽象产品对象的操作
  */
@@ -15,6 +18,6 @@ public interface AbstractFactory {
      * @return 抽象产品B的对象
      */
 
-     public AbastractProductB createProductB();
+     public AbstractProductB createProductB();
 
 }
