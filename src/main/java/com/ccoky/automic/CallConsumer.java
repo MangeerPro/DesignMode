@@ -2,10 +2,15 @@ package com.ccoky.automic;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class CallConsumer implements Callable<Integer> {
 	private int[] arrs;
 	private AtomicInteger arrSize;
+	private Lock lock = new ReentrantLock();
+	private Condition condition = lock.newCondition();
 	
 	@Override
 	public Integer call() throws Exception {
