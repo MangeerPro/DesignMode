@@ -151,3 +151,4 @@ fabric.properties
 
 /.classpath
 /.project
+.vscode/settings.json
